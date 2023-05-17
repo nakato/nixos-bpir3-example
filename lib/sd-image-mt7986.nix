@@ -8,7 +8,7 @@ with lib;
 let
   rootfsImage = pkgs.callPackage (pkgs.path + "/nixos/lib/make-ext4-fs.nix") {
     storePaths = config.system.build.toplevel;
-    compressImage = true;
+    compressImage = false;
     volumeLabel = "root";
   };
 in {
