@@ -1,0 +1,30 @@
+/dts-v1/;
+/plugin/;
+#include <dt-bindings/gpio/gpio.h>
+
+/ {
+	compatible = "bananapi,bpi-r3", "mediatek,mt7986a";
+
+	// Hardware i2c isn't working, disable it and use a bit-bang i2c implementation.
+	// Just don't do anything heavy with it.
+	fragment@0 {
+		target = <&i2c0>;
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@1 {
+		target-path = "/";
+		__overlay__ {
+			i2c_exp: i2c-gpio-exp-0 {
+				compatible = "i2c-gpio";
+				sda-gpios = <&pio 4 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAIN)>;
+				scl-gpios = <&pio 3 (GPIO_ACTIVE_HIGH | GPIO_OPEN_DRAIN)>;
+				i2c-gpio,delay-us = <2>;
+				#address-cells = <1>;
+				#size-cells = <0>;
+			};
+		};
+	};
+};
