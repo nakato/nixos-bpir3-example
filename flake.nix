@@ -97,6 +97,11 @@
                 };
               };
               networking.interfaces.br0.useDHCP = true;
+
+              services.openssh.enable = true;
+              # For initial setup
+              users.users.root.password = "bananapi";
+              services.openssh.settings.PermitRootLogin = "yes";
             })
           ];
         };
