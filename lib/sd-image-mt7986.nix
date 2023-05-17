@@ -40,7 +40,7 @@ in {
         root_fs=${rootfsImage}
 
         mkdir -p $out/nix-support $out/sd-image
-        export img=$out/sd-image/${imageName}.raw
+        export img=$out/sd-image/nixos-bananapir3-sd.raw
 
         echo "${pkgs.stdenv.buildPlatform.system}" > $out/nix-support/system
         echo "file sd-image $img" >> $out/nix-support/hydra-build-products
