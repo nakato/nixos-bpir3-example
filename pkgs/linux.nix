@@ -15,11 +15,12 @@ let
     }));
 
   linux_bpir3 = customPackage {
-    version = "6.4.0-rc2";
-    modDirVersion = "6.4.0-rc2";
+    version = "6.4.0-rc5";
+    modDirVersion = "6.4.0-rc5";
+
     src = fetchurl {
-      url = "https://git.kernel.org/torvalds/t/linux-6.4-rc2.tar.gz";
-      hash = "sha256-s/0Lwidxfrspxs/wSpypQNjDQKTG2jJ5KujZFl6R8hM=";
+      url = "https://git.kernel.org/torvalds/t/linux-6.4-rc5.tar.gz";
+      hash = "sha256-jtPUALgoUhfaldP2tTWQGiR6jKyKkQ9QqXY9eOvntcY=";
     };
     kernelPatches = [
       {
