@@ -80,10 +80,6 @@
                    name = "mt7986a efuses";
                    dtsFile = ./bpir3-dts/mt7986a-efuse-device-tree-node.dts;
                  }
-                 {
-                   name = "i2c on expansion header";
-                   dtsFile = ./bpir3-dts/mt7986a-i2c-gpio-exphdr.dts;
-                 }
                ];
 
                boot.initrd.preDeviceCommands = ''
