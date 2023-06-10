@@ -4,15 +4,18 @@
 , ncurses
 , ...
 }:
-{
-  ubootBananaPiR3 = (buildUBoot {
-    defconfig = "mt7986a_bpir3_sd_defconfig";
-    extraMeta.platforms = ["aarch64-linux"];
-    extraPatches = [
+let
+  extraPatches = [
       ./mt7986-default-bootcmd.patch
       ./mt7986-persistent-mac-from-cpu-uid.patch
       ./mt7986-persistent-wlan-mac-from-cpu-uid.patch
     ];
+in
+{
+  ubootBananaPiR3 = (buildUBoot {
+    defconfig = "mt7986a_bpir3_sd_defconfig";
+    extraMeta.platforms = ["aarch64-linux"];
+    extraPatches = extraPatches;
     extraConfig = ''
       CONFIG_DISTRO_DEFAULTS=y
       CONFIG_CMD_SYSBOOT=y
@@ -43,14 +46,17 @@
       CONFIG_SHA1=y
       # CONFIG_LAST_STAGE_INIT=y Even later
       CONFIG_OF_BOARD_SETUP=y
+      CONFIG_BOOTCOMMAND="run distro_bootcmd"
     '';
     filesToInstall = [ "u-boot.bin" ];
     src = fetchurl {
-      url = "ftp://ftp.denx.de/pub/u-boot/u-boot-2023.01.tar.bz2";
-      hash = "sha256-aUI7rTgPiaCRZjbonm3L0uRRLVhDCNki0QOdHkMxlQ8=";
+      url = "ftp://ftp.denx.de/pub/u-boot/u-boot-2023.07-rc3.tar.bz2";
+      hash = "sha256-QuwINnS9MPpMFueMP19FPAjZ9zdZWne13aWVrDoJ2C8=";
     };
-    version = "2023.01";
+    version = "2023.07-rc3";
   }).overrideAttrs (oldAttrs: {
     nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ pkg-config ncurses ];
+    # Wipe out RPi patches; they won't apply.
+    patches = extraPatches;
   });
 }

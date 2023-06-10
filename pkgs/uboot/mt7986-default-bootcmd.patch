@@ -60,7 +60,7 @@ index 0c41af1fc3..4ddf3cef89 100644
 +
 +
 +/* No comp_addr supplied */
-+#define CONFIG_EXTRA_ENV_SETTINGS \
++#define CFG_EXTRA_ENV_SETTINGS \
 +	"bootm_size=" BOOTM_SIZE "\0" \
 +	"fdt_addr_r=" FDT_ADDR_R "\0" \
 +	"fdt_high=" FDT_HIGH "\0" \
