@@ -87,8 +87,8 @@ in {
         -n 1:$bl2Start:$bl2End -c 1:bl2 -A 1:set:2:1 \
         -n 2:$envStart:$envEnd -c 2:u-boot-env \
         -n 3:$factoryStart:$factoryEnd -c 3:factory \
-        -n 4:$fipStart:$fipEnd -c 4:fip -t 4:C12A7328-F81F-11D2-BA4B-00A0C93EC93B \
-        -n 5:$bootPartStart:$bootPartEnd -c 5:kernel \
+        -n 4:$fipStart:$fipEnd -c 4:fip \
+        -n 5:$bootPartStart:$bootPartEnd -c 5:boot -t 5:C12A7328-F81F-11D2-BA4B-00A0C93EC93B \
         -n 6:$rootPartStart:$rootPartEnd -c 6:root \
         $img
 
