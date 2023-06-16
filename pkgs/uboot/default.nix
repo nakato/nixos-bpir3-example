@@ -35,7 +35,6 @@ in
       CONFIG_LZ4=y
       CONFIG_BZIP2=y
       CONFIG_ZSTD=y
-      SYS_MALLOC_LEN=400000
       # If setting ethaddr via scripts
       # CONFIG_CMD_SHA1SUM=y
       # If we do it ourself instead of setting env
