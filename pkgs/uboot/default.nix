@@ -17,6 +17,11 @@ in
     extraMeta.platforms = ["aarch64-linux"];
     extraPatches = extraPatches;
     extraConfig = ''
+      CONFIG_BOOTSTD_DEFAULTS=y
+      CONFIG_BOOTSTD_FULL=y
+      CONFIG_CMD_BOOTFLOW_FULL=y
+      # Expo for bootflow menu
+      CONFIG_EXPO=y
       CONFIG_DISTRO_DEFAULTS=y
       CONFIG_CMD_SYSBOOT=y
       CONFIG_AUTOBOOT=y
@@ -38,7 +43,6 @@ in
       CONFIG_BOARD_LATE_INIT=y
       CONFIG_SHA1=y
       CONFIG_OF_BOARD_SETUP=y
-      CONFIG_BOOTCOMMAND="run distro_bootcmd"
     '';
     filesToInstall = [ "u-boot.bin" ];
     src = fetchurl {
