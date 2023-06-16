@@ -27,7 +27,6 @@ in
       CONFIG_AUTOBOOT=y
       CONFIG_BOOTDELAY=2
       CONFIG_USE_BOOTCOMMAND=y
-      CONFIG_DISTRO_DEFAULTS=y
       CONFIG_DEFAULT_FDT_FILE="mediatek/mt7986a-bananapi-bpi-r3.dtb"
       # Big kernels
       CONFIG_SYS_BOOTM_LEN=0x6000000
