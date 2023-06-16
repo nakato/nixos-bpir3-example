@@ -26,7 +26,6 @@ in
       CONFIG_DEFAULT_FDT_FILE="mediatek/mt7986a-bananapi-bpi-r3.dtb"
       # Big kernels
       CONFIG_SYS_BOOTM_LEN=0x6000000
-      # FIXME: CONFIG_DEFAULT_DEVICE_TREE needs BPi R3 DTS created
       CONFIG_CMD_ERASEENV=y
       CONFIG_CMD_UNLZ4=y
       CONFIG_CMD_UNZIP=y
