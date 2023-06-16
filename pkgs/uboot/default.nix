@@ -35,15 +35,9 @@ in
       CONFIG_LZ4=y
       CONFIG_BZIP2=y
       CONFIG_ZSTD=y
-      # If setting ethaddr via scripts
-      # CONFIG_CMD_SHA1SUM=y
-      # If we do it ourself instead of setting env
-      # Not sure if this is u-boot fdt or boot fdt.
-      # CONFIG_OF_BOARD_FIXUP=y
       # Set the envvars: board_late_init
       CONFIG_BOARD_LATE_INIT=y
       CONFIG_SHA1=y
-      # CONFIG_LAST_STAGE_INIT=y Even later
       CONFIG_OF_BOARD_SETUP=y
       CONFIG_BOOTCOMMAND="run distro_bootcmd"
     '';
