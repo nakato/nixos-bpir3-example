@@ -45,7 +45,7 @@
               # They fail to load properly, leaving the system without working ethernet, they'll oops on
               # remove. MTK-DSA parts and PCIe were observed to do this.
               boot.initrd.includeDefaultModules = false;
-              boot.initrd.kernelModules = [ "rfkill" "cfg80211" "mt7915e" ];
+              boot.initrd.kernelModules = [ "rfkill" "cfg80211" "mt7915e" "mii" ];
               boot.kernelParams = [ "console=ttyS0,115200" ];
               hardware.enableRedistributableFirmware = true;
               # Wireless hardware exists, regulatory database is essential.
