@@ -7,5 +7,5 @@ in
 {
   inherit (uboot) ubootBananaPiR3;
   inherit (atf) armTrustedFirmwareMT7986;
-  inherit (linux) linuxPackages_bpir3;
+  inherit (linux) linuxPackages_bpir3 linuxPackages_bpir3_minimal;
 }
