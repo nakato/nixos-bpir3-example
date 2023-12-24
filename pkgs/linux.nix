@@ -1,6 +1,6 @@
 { lib
 , linuxKernel
-, linux_6_4
+, linux_6_6
 , ...
 }:
 let
@@ -23,7 +23,7 @@ let
     }
   ];
 
-  linux_bpir3 = linux_6_4.override {
+  linux_bpir3 = linux_6_6.override {
     inherit kernelPatches;
 
     # This will take ~22GB to build.  /tmp better be big.
@@ -62,7 +62,7 @@ let
       MT76_LEDS = yes;
       MT76_CONNAC_LIB = module;
       MT7815E = module;
-      MT7986_WMAC = yes;
+      MT798X_WMAC = yes;
       # Pinctrl
       EINT_MTK = yes;
       PINCTRL_MTK = yes;

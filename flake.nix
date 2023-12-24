@@ -36,7 +36,6 @@
           modules = [
             ./lib/sd-image-mt7986.nix
             ({ config, lib, self, ...}: {
-              # Needs to be updated, a number of patches made it into 6.3
               boot.kernelPackages = self.packages.aarch64-linux.linuxPackages_bpir3;
               # We exclude a number of modules included in the default list. A non-insignificant amount do
               # not apply to embedded hardware like this, so simply skip the defaults.
