@@ -1,7 +1,6 @@
 { lib
 , linuxKernel
 , linux_6_4
-, copyPathToStore
 , ...
 }:
 let
@@ -23,18 +22,6 @@ let
       patch = ./linux-mtk-pcie.patch;
     }
   ];
-
-  linuxPackages_bpir3_minimal = let
-    base = linux_6_4;
-    bpir3_minimal = linuxKernel.customPackage {
-      inherit (base) version modDirVersion src;
-      # A working config cannot be built with structedExtraConfig...
-      # To disable, say, NET_DSA_TAG_BRCM, B53 needs to first be disabled, which has not yet been prompted for yet.
-      # To disable B53, B53_SRAB_DRIVER needs to be disabled, which is prompted afterwards.
-      configfile = copyPathToStore ./bpir3_kernel.config;
-    };
-  in
-    bpir3_minimal;
 
   linux_bpir3 = linux_6_4.override {
     inherit kernelPatches;
@@ -97,5 +84,4 @@ let
 in
 {
   linuxPackages_bpir3 = linuxKernel.packagesFor linux_bpir3;
-  inherit linuxPackages_bpir3_minimal;
 }
