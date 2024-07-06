@@ -1,3 +1,45 @@
+# Deprecation Notice
+
+See my other repository [nixos-sbc](https://github.com/nakato/nixos-sbc),
+which is focused on supporting multiple SBC devices in a reusable way.
+
+My other repository is designed to be included as a nixosModule rather than
+duplicated, and provides a consistent interface to handling device features,
+such as I2C, SPI, UART, RTC, etc.
+
+```
+{
+  description = "NixOS configuration with flakes";
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixos-sbc = {
+      url = "github:nakato/nixos-sbc/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
+
+  outputs = { self, nixpkgs, nixos-sbc }: {
+    nixosConfigurations = {
+      myBpiR3 = nixpkgs.lib.nixosSystem {
+        modules = [
+          nixos-sbc.nixosModules.default
+          nixos-sbc.nixosModules.boards.bananapi.bpir3
+          {
+            sbc.version = "0.2";
+
+            # User config, networking, etc
+
+            # Accept regulatory responsibility or disable the wifi hardware.
+            # sbc.wireless.wifi.acceptRegulatoryResponsibility = true;
+          }
+        ];
+      };
+    };
+  };
+}
+```
+
+
 # NixOS on BPi-R3 Example
 
 This is an example of booting NixOS on a BPi-R3.
